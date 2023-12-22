@@ -1,0 +1,16 @@
+package views
+
+import "github.com/LuizGuilherme13/login-page-gotempl/internal/components"
+import "github.com/LuizGuilherme13/login-page-gotempl/internal/models"
+
+
+templ Home(user models.User){
+   @components.Head("Home Page")
+  <body>
+    <main class="container-fluid" style="display: flex; justify-content: center; align-items: center;">
+      <div>
+        Welcome, {user.UserName}
+      </div>
+    </main>
+  </body>
+}

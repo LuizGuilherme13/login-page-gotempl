@@ -1,0 +1,17 @@
+package components
+
+import (
+  "strings"
+)
+
+templ Input(label string){
+  <label for={strings.Trim(strings.ToLower(label), " ")}>
+    {label}
+    <input 
+      type="text" 
+      id={strings.Trim(strings.ToLower(label), " ")} 
+      name={strings.Trim(strings.ToLower(label), " ")} 
+      placeholder={label} required
+    />
+  </label>
+}

@@ -1,0 +1,21 @@
+package views
+
+import "github.com/LuizGuilherme13/login-page-gotempl/internal/components"
+
+templ Signup() {
+  @components.Head("Signup Page")
+  <body>
+    <main class="container-fluid" style="display: flex; justify-content: center; align-items: center;">
+      <div style="width:50vw;">
+        <form action="/signup" method="post">
+          <div class="">
+            @components.Input("Username")
+            @components.Input("E-mail")
+            @components.Input("Password")
+          </div>
+          <button type="submit">Signup</button>
+        </form>
+      </div>
+    </main>
+  </body>
+}
