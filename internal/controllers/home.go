@@ -16,4 +16,5 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	}
 
 	views.Home(*authenticatedUser).Render(r.Context(), w)
+
 }

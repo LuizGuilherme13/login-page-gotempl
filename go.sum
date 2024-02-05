@@ -1,7 +1,7 @@
-github.com/LuizGuilherme13/unodatabase v0.0.0-20231203022005-f721004de9a2 h1:XOUTLBkD/pg9ZgVET25jyKzZQ7TooIrm4xEFs7zGvMw=
-github.com/LuizGuilherme13/unodatabase v0.0.0-20231203022005-f721004de9a2/go.mod h1:RjgBQxBaOoPZzts1aGcx3UtAOL9ErZQfrls44WAxKLU=
-github.com/a-h/templ v0.2.476 h1:+H4hP4CwK4kfJwXsE6kHeFWMGtcVOVoOm/I64uzARBk=
-github.com/a-h/templ v0.2.476/go.mod h1:zQ95mSyadNTGHv6k5Fm+wQU8zkBMMbHCHg7eAvUZKNM=
+github.com/LuizGuilherme13/norm v0.1.2 h1:Af1azyzvqjQjLOiAbXfRsp1pBFZq7vKSPIroM9+c5W0=
+github.com/LuizGuilherme13/norm v0.1.2/go.mod h1:gWF2AeAUG+qop1I4fRgvyQ3Yl2nGFX5xS5cCQZF3eaE=
+github.com/a-h/templ v0.2.543 h1:8YyLvyUtf0/IE2nIwZ62Z/m2o2NqwhnMynzOL78Lzbk=
+github.com/a-h/templ v0.2.543/go.mod h1:jP908DQCwI08IrnTalhzSEH9WJqG/Q94+EODQcJGFUA=
 github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
 github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
 github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=

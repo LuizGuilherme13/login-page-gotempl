@@ -16,6 +16,7 @@ func init() {
 }
 
 func main() {
+
 	http.Handle("/", templ.Handler(views.Signin()))
 	http.HandleFunc("/signin", middlewares.Logging(controllers.Signin))
 
@@ -24,4 +25,5 @@ func main() {
 
 	log.Println("Runnin on port :8080")
 	http.ListenAndServe(":8080", nil)
+
 }

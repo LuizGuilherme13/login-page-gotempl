@@ -4,9 +4,9 @@ import (
 	"context"
 	"database/sql"
 	"errors"
-	"fmt"
 	"net/http"
 
+	"github.com/LuizGuilherme13/login-page-gotempl/internal/apierror"
 	"github.com/LuizGuilherme13/login-page-gotempl/internal/repository"
 )
 
@@ -18,12 +18,17 @@ func Signin(w http.ResponseWriter, r *http.Request) {
 	user, err := repository.AuthWithUsernameOrEmail(username, password)
 	switch {
 	case errors.Is(err, sql.ErrNoRows):
-		fmt.Println("Usuário e/ou senha incorretos!")
-		http.Redirect(w, r, "/sigin", http.StatusSeeOther)
+
+		apierror.Handle(w, err, "Incorrect username and/or password!",
+			"Incorrect username and/or password!", http.StatusUnauthorized)
+
 		return
+
 	case err != nil:
-		fmt.Println(err)
-		http.Redirect(w, r, "/sigin", http.StatusSeeOther)
+
+		apierror.Handle(w, err, "An error occurred in the application!",
+			"An error occurred in the application!", http.StatusInternalServerError)
+
 		return
 
 	}

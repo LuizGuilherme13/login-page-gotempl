@@ -1,56 +1,44 @@
 package controllers
 
 import (
-	"database/sql"
+	"context"
+	"errors"
 	"net/http"
 
 	"github.com/LuizGuilherme13/login-page-gotempl/internal/apierror"
 	"github.com/LuizGuilherme13/login-page-gotempl/internal/initializers"
 	"github.com/LuizGuilherme13/login-page-gotempl/internal/models"
-	"github.com/LuizGuilherme13/login-page-gotempl/internal/repository"
+	"github.com/LuizGuilherme13/norm/pkg/norm"
+	"github.com/LuizGuilherme13/norm/pkg/norm/repository/postgres"
+	"github.com/lib/pq"
 )
 
 func Signup(w http.ResponseWriter, r *http.Request) {
-	username := r.FormValue("username")
-	email := r.FormValue("e-mail")
-	password := r.FormValue("password")
 
-	db, err := sql.Open("postgres", initializers.DB.String())
-	if err != nil {
-		apierror.Handle(w, err, "Ocorreu um erro na aplicação",
-			"Error opening database", http.StatusInternalServerError)
-	}
-	defer db.Close()
+	user := &models.User{}
 
-	tx, err := db.Begin()
-	if err != nil {
-		apierror.Handle(w, err, "Ocorreu um erro na aplicação",
-			"Error starting transaction", http.StatusInternalServerError)
-	}
-	defer tx.Rollback()
+	user.UserName = r.FormValue("username")
+	user.Email = r.FormValue("e-mail")
+	user.Password = r.FormValue("password")
 
-	// query := "INSERT INTO users(username, email, password) "
-	// query += "VALUES($1, $2, $3)"
+	nORM := norm.NewService(postgres.New(initializers.DB))
 
-	// _, err = tx.Exec(query, username, email, password)
-	// if err != nil {
-	// 	apierror.Handle(w, err, "Ocorreu um erro na aplicação",
-	// 		"Error when executing", http.StatusInternalServerError)
-	// }
+	err := nORM.InTable("users").FromModel(user).Omit("user_id").Create()
 
-	err = repository.CreateUser(tx, models.User{
-		UserName: username,
-		Email:    email,
-		Password: password,
-	})
-	if err != nil {
-		apierror.Handle(w, err, "Ocorreu um erro na aplicação", err.Error(), http.StatusInternalServerError)
+	var pErr *pq.Error
+	switch {
+	case errors.As(err, &pErr) && pErr.Code == pq.ErrorCode("23505"):
+		apierror.Handle(w, err, "This username is already in use",
+			err.Error(), http.StatusBadRequest)
+		return
+	case err != nil:
+		apierror.Handle(w, err, "An error occurred in the application",
+			err.Error(), http.StatusInternalServerError)
+		return
 	}
 
-	if err := tx.Commit(); err != nil {
-		apierror.Handle(w, err, "Ocorreu um erro na aplicação",
-			"Error committing transaction", http.StatusInternalServerError)
-	}
+	ctx := context.WithValue(r.Context(), "user", user)
+	r = r.WithContext(ctx)
 
-	http.Redirect(w, r, "/signin", http.StatusSeeOther)
+	Home(w, r)
 }

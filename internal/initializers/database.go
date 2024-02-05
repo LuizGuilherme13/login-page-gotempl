@@ -4,11 +4,11 @@ import (
 	"log"
 	"os"
 
-	"github.com/LuizGuilherme13/unodatabase/pkg/unodatabase/models"
+	"github.com/LuizGuilherme13/norm/pkg/db"
 	"github.com/joho/godotenv"
 )
 
-var DB models.DBConn
+var DB db.DBConn
 
 func LoadDB() {
 
@@ -17,7 +17,7 @@ func LoadDB() {
 		log.Println("Erro ao ler o arquivo .env")
 	}
 
-	DB = models.DBConn{
+	DB = db.DBConn{
 		Driver:   os.Getenv("DB_DRIVER"),
 		Host:     os.Getenv("DB_HOST"),
 		Port:     os.Getenv("DB_PORT"),

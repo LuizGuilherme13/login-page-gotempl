@@ -10,3 +10,4 @@
 .vscode/
 data/
 .env
+*_templ.go
