@@ -1,16 +1,11 @@
 package apierror
 
 import (
-	"log"
+	"fmt"
 	"net/http"
 )
 
-func Handle(w http.ResponseWriter, err error, userMessage, internalMessage string, statusCode int) {
-
-	log.Printf("controllers.Signup(): %s : %v", internalMessage, err)
-
-	w.WriteHeader(statusCode)
-
-	w.Write([]byte(userMessage))
-
+func Handle(w http.ResponseWriter, err error, userMessage string, statusCode int) {
+	fmt.Println(err)
+	http.Error(w, userMessage, statusCode)
 }

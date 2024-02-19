@@ -1,10 +1,8 @@
-github.com/LuizGuilherme13/norm v0.1.2 h1:Af1azyzvqjQjLOiAbXfRsp1pBFZq7vKSPIroM9+c5W0=
-github.com/LuizGuilherme13/norm v0.1.2/go.mod h1:gWF2AeAUG+qop1I4fRgvyQ3Yl2nGFX5xS5cCQZF3eaE=
+github.com/LuizGuilherme13/norm v0.1.3 h1:AzHqpUua9LsVm6FeWRlKokmD4xr9J49HCG3BOrke1PI=
+github.com/LuizGuilherme13/norm v0.1.3/go.mod h1:+bxO6kNNx18jx49v4HDcJ601bsZ60XzaqEmC4Bvifc8=
 github.com/a-h/templ v0.2.543 h1:8YyLvyUtf0/IE2nIwZ62Z/m2o2NqwhnMynzOL78Lzbk=
 github.com/a-h/templ v0.2.543/go.mod h1:jP908DQCwI08IrnTalhzSEH9WJqG/Q94+EODQcJGFUA=
 github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
 github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
-github.com/joho/godotenv v1.5.1 h1:7eLL/+HRGLY0ldzfGMeQkb7vMd0as4CfYvUVzLqw0N0=
-github.com/joho/godotenv v1.5.1/go.mod h1:f4LDr5Voq0i2e/R5DDNOoa2zzDfwtkZa6DnEwAbqwq4=
 github.com/lib/pq v1.10.9 h1:YXG7RB+JIjhP29X+OtkiDnYaXQwpS4JEWq7dtCCRUEw=
 github.com/lib/pq v1.10.9/go.mod h1:AlVN5x4E4T544tWzH6hKfbfQvm3HdbOxrmggDNAPY9o=
